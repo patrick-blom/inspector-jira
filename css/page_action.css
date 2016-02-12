@@ -16,13 +16,11 @@ hr {
     border-top: 1px solid #ccc;
 }
 
-.jira-bagde{
+.jira-badge {
     font-family: "Helvetica", Arial, serif;
     line-height: 14px;
-    color: #fff;
     vertical-align: baseline;
     white-space: nowrap;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.35);
     font-weight: bold;
 }
 
@@ -32,7 +30,7 @@ span.jira-label {
     float: left;
 }
 
-.round{
+.round {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
