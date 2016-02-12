@@ -32,6 +32,7 @@
         "http://*/*"
       ],
       "js": [
+        "src/vendor/js/jquery.min.js",
         "src/inject/inject.js"
       ]
     }

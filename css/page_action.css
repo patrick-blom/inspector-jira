@@ -1,0 +1,56 @@
+#mainPopup {
+    padding: 10px;
+    height: 200px;
+    width: 250px;
+    font-family: Helvetica, Ubuntu, Arial, sans-serif;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #ccc;
+}
+
+.jira-bagde{
+    font-family: "Helvetica", Arial, serif;
+    line-height: 14px;
+    color: #fff;
+    vertical-align: baseline;
+    white-space: nowrap;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.35);
+    font-weight: bold;
+}
+
+span.jira-label {
+    width: 150px;
+    display: block;
+    float: left;
+}
+
+.round{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 1px 4px 2px;
+    display: inline;
+
+}
+
+p#headline {
+    float: left;
+    margin-right: 15px;
+}
+
+p#headline-state {
+    font-weight: bold;
+}
+
+ul#jira_properties {
+    list-style: none;
+    padding: 0;
+}

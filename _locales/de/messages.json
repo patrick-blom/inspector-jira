@@ -27,5 +27,29 @@
   },
   "optionsSaved": {
     "message": "Einstellungen gespeichert"
+  },
+  "PopupHeadline": {
+    "message": "Inspector Jira Status:"
+  },
+  "PopupHeadlineStateOK": {
+    "message": "aktiv"
+  },
+  "Popup_build": {
+    "message": "Paketnummer:"
+  },
+  "Popup_devMode": {
+    "message": "Entwickler Modus aktiv:"
+  },
+  "Popup_isBeta": {
+    "message": "Betaversion:"
+  },
+  "Popup_isRC": {
+    "message": "Release Candidate:"
+  },
+  "Popup_provideMails": {
+    "message": "E-Mailversand aktiv:"
+  },
+  "Popup_version": {
+    "message": "Version:"
   }
 }
