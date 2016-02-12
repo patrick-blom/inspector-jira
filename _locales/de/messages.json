@@ -1,0 +1,31 @@
+{
+  "extDescription": {
+    "message": "Verbesserte JRIA Funktionen, nützliche Shortcuts und mehr",
+    "description": "Beschreibung der Chrome Erweiterung"
+  },
+  "optionsPageTitle": {
+    "message": "Einstellungen",
+    "description": "Titel der Options Page"
+  },
+  "startTrackerLabel": {
+    "message": "Tracker Start Button Beschriftung/en"
+  },
+  "stopTrackerLabel": {
+    "message": "Tracker Stop Button Beschriftung/en"
+  },
+  "startTrackerPlaceholder": {
+    "message": "Fortschritt starten"
+  },
+  "stopTrackerPlaceholder": {
+    "message": "Fortschritt stoppen"
+  },
+  "trackerOptionsDescription": {
+    "message": "Diese Werte definieren die Beschriftungen der Fortschritt Start/Stop buttons in Jira. Bei klick auf diese wir der Tracker gestartet oder gestoppt. Mehrere Buttons k&ouml;nnen mit semikolon (;) getrennt angegeben werden."
+  },
+  "optionsPageSave": {
+    "message": "Speichern"
+  },
+  "optionsSaved": {
+    "message": "Einstellungen gespeichert"
+  }
+}
