@@ -1,14 +1,50 @@
 var page_action = function () {
 
-    var PopUp = function (headline, headlinestate, itemcontainer) {
+    var PopUp = function (headline, headlinestate, popupcontainer, itemdata) {
         this.headLine = headline;
         this.headLineState = headlinestate;
-        this.itemcontainer = itemcontainer;
+        this.popUpConatiner = popupcontainer;
+        this.itemData = itemdata;
     };
 
     PopUp.prototype = {
+
+        /**
+         * Generates the popup
+         */
         generate: function () {
 
+            if (this.itemData === null) {
+                return;
+            }
+
+            // add the popup head
+            this.popUpConatiner.innerHTML = this.getHeadTemplate(
+                this.headLine,
+                this.headLineState
+            );
+
+
+            // generate item container
+            var ul = document.createElement('ul');
+            ul.id = "jira_properties";
+            this.popUpConatiner.appendChild(ul);
+
+            // generate the items
+            for (var property in this.itemData) {
+
+                var item = document.createElement('li');
+                item.className = "property";
+                item.innerHTML = this.getItemTemplate(
+                    property,
+                    this.itemData[property],
+                    chrome.i18n.getMessage('Popup_' + property),
+                    this.getColorClass(this.itemData[property])
+                )
+
+                document.querySelector('#jira_properties').appendChild(item);
+
+            }
         },
         /**
          * Gets the color css class for the template
@@ -37,43 +73,31 @@ var page_action = function () {
          * @returns {string}
          */
         getItemTemplate: function (key, value, label, color) {
-            return  '<li class="property">' +
-                        '<span class="jira-label ' + key + '">' + label + '</span>' +
-                        '<span class="jira-badge round ' + color + '">' + value + '</span>' +
-                    '</li>';
+            return '<span class="jira-label ' + key + '">' + label + '</span>' +
+                '<span class="jira-badge round ' + color + '">' + value + '</span>';
+        },
+        getHeadTemplate: function (headline, headlinestate) {
+
+            return '<p id="headline">' + headline + '</p>' +
+                '<p id="headline-state" class="bg-success round">' + headlinestate + '</p>' +
+                '<hr>';
         }
     };
 
-
-}();
-$(document).ready(function () {
-
+    // Get the background page and generate the popup
     chrome.runtime.getBackgroundPage(function (bg) {
 
-        $('#headline').text(chrome.i18n.getMessage('PopupHeadline'))
-        $('#headline-state').text(chrome.i18n.getMessage('PopupHeadlineStateOK'))
+        var popup = new PopUp(
+            chrome.i18n.getMessage('PopupHeadline'),
+            chrome.i18n.getMessage('PopupHeadlineStateOK'),
+            document.querySelector('#mainPopup'),
+            bg.backgroundData.applicationInfo
+        );
 
-        $('#jira_properties').empty();
-
-        $.each(bg.backgroundData.applicationInfo, function (index, item) {
-
-            var color = '';
-            if (item === true) {
-                color = 'bg-success';
-            } else if (item === false) {
-                color = 'bg-danger';
-            } else {
-                color = 'bg-info';
-            }
-
-            var label = 'Popup_' + index;
-            $('#jira_properties').append(
-                '<li class="property"><span class="jira-label ' + index + '">' + chrome.i18n.getMessage(label) + '</span>' +
-                '<span class="jira-badge round ' + color + '">' + item + '</span></li>'
-            );
-        });
-
+        popup.generate();
     });
 
+}();
 
-});
+// load the page_action
+document.addEventListener('DOMContentLoaded', page_action, false);
