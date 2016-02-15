@@ -24,7 +24,6 @@ var page_action = function () {
                 this.headLineState
             );
 
-
             // generate item container
             var ul = document.createElement('ul');
             ul.id = "jira_properties";
@@ -65,6 +64,7 @@ var page_action = function () {
             return color;
         },
         /**
+         * Returns hte item template
          *
          * @param key the property identifier
          * @param value the property value
@@ -76,6 +76,13 @@ var page_action = function () {
             return '<span class="jira-label ' + key + '">' + label + '</span>' +
                 '<span class="jira-badge round ' + color + '">' + value + '</span>';
         },
+        /**
+         * Returns the headline template
+         *
+         * @param headline
+         * @param headlinestate
+         * @returns {string}
+         */
         getHeadTemplate: function (headline, headlinestate) {
 
             return '<p id="headline">' + headline + '</p>' +
