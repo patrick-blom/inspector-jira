@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // localize my template
-    INSPECTOR_JIRA.helper.localizeTemplate();
+    INSPECTOR_JIRA.helper.localize();
 
     // Restore options
     var defaultOptions = {};
