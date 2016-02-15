@@ -10,7 +10,7 @@ var INSPECTOR_JIRA = {};
      */
     var InspectorHelper = function () {
         this.instance = document;
-        console.log('helper loaded');
+        console.log('It seems you need some help. I will load the helper asap...');
     };
 
     InspectorHelper.prototype = {
@@ -21,7 +21,7 @@ var INSPECTOR_JIRA = {};
          */
         localize: function (elements) {
 
-            console.log('localize template');
+            console.log('mughmeH lI´... ehhh translation in progress...');
 
             if (elements == null) {
                 elements = this.instance.getElementsByTagName("*");

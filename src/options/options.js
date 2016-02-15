@@ -8,7 +8,7 @@ $(document).ready(function () {
         defaultOptions[item.id] = $(item).attr('placeholder');
     });
 
-    console.log('fetching data:' + JSON.stringify(defaultOptions));
+    console.log('Yehaa! Fetching data from storage, or use the defaults.');
     chrome.storage.sync.get(defaultOptions, function (items) {
         $.each(items,function(index,item){
             $('#'+index).val(item);
@@ -23,7 +23,7 @@ $(document).ready(function () {
             dataToSave[item.id] = item.value;
         });
 
-        console.log('saving data:' + JSON.stringify(dataToSave));
+        console.log('It seems there are some changes. After a detailed inspection i´ll save them.');
         chrome.storage.sync.set(
             dataToSave,
             function () {

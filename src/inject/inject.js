@@ -64,7 +64,6 @@ var inspectorJira = function () {
                 }
 
                 this.applicationData[property] = value;
-
             }
 
             return this.applicationData;
@@ -98,6 +97,15 @@ var inspectorJira = function () {
         chrome.runtime.sendMessage({
             "applicationInfo": jindentifier.getApplicationData()
         });
+
+        // inject the enhance script
+        var customScript = document.createElement('script');
+        customScript.src = chrome.extension.getURL('src/inject/enhanced_jira.js');
+        (document.head || document.documentElement).appendChild(customScript);
+        // remove script after loading
+        customScript.onload = function(){
+            this.parentNode.removeChild(customScript);
+        };
     }
 
 }();
