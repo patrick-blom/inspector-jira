@@ -2,7 +2,7 @@
 var INSPECTOR_JIRA = {};
 
 // init my helper class
-var inspectorJiraHelper = function () {
+!function () {
 
     /**
      * Initialize helper class
