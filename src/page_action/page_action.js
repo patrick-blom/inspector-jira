@@ -73,6 +73,7 @@ var page_action = function () {
          * @returns {string}
          */
         getItemTemplate: function (key, value, label, color) {
+
             return '<span class="jira-label ' + key + '">' + label + '</span>' +
                 '<span class="jira-badge round ' + color + '">' + value + '</span>';
         },
