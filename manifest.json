@@ -37,6 +37,7 @@
     }
   ],
   "web_accessible_resources": [
-    "src/inject/enhanced_jira.js"
+    "src/inject/enhanced_jira.js",
+    "src/vendor/js/jquery.min.js"
   ]
 }

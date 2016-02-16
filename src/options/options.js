@@ -1,40 +1,76 @@
-$(document).ready(function () {
+var options = function () {
+
+    var OpntionsHandler = function (saveSelector, stateSelector) {
+        this.saveSelector = saveSelector;
+        this.stateSelector = stateSelector;
+    };
+
+    OpntionsHandler.prototype = {
+        /**
+         * Get the saveSelector fields
+         *
+         * @returns {{}}
+         * @private
+         */
+        _collectFields: function () {
+            var fields = {};
+            var elements = document.querySelectorAll(this.saveSelector);
+
+            for (var element in elements) {
+                fields[element.id] = element.value;
+            }
+
+            return fields;
+        },
+        /**
+         * Get the Data from storage
+         */
+        getData: function () {
+            chrome.storage.sync.get(this._collectFields(), function (items) {
+                for (var item in items) {
+                    var element = document.querySelector('#'.item);
+                    if (element) {
+                        if (element.getAttribute('type') == 'checkbox') {
+                            element.checked = (items[item] == 'on') ? true : false;
+                        } else {
+                            element.value = items[item];
+                        }
+                    }
+                }
+            });
+        },
+        setData: function () {
+            chrome.storage.sync.set(this._collectFields(), function () {
+                var state = document.querySelector(this.stateSelector);
+                state.innerHTML = chrome.i18n.getMessage('optionsSaved');
+                state.className.replace('hidden', '');
+                setTimeout(function () {
+                    state.className = state.className + ' hidden';
+                    state.innerHTML = "";
+                }, 750);
+            });
+        }
+    };
+
+    // main script
+
     // localize my template
     INSPECTOR_JIRA.helper.localize();
 
-    // Restore options
-    var defaultOptions = {};
-    $('.toSave').each(function (index, item) {
-        defaultOptions[item.id] = $(item).attr('placeholder');
-    });
+    // get handler
+    var oh = new OpntionsHandler('.toSave', '#status');
 
-    console.log('Yehaa! Fetching data from storage, or use the defaults.');
-    chrome.storage.sync.get(defaultOptions, function (items) {
-        $.each(items,function(index,item){
-            $('#'+index).val(item);
-        });
-    });
+    // fetch data
+    console.log('Yehaa! Fetching data from storage.');
+    oh.getData();
 
-    // Save options
-    $('#save').click(function () {
-
-        var dataToSave = {};
-        $('.toSave').each(function (index, item) {
-            dataToSave[item.id] = item.value;
-        });
-
+    //add onlick event for set data
+    document.querySelector('#save').addEventListener('click', function () {
         console.log('It seems there are some changes. After a detailed inspection i´ll save them.');
-        chrome.storage.sync.set(
-            dataToSave,
-            function () {
-                var status = $('#status');
-                status.text(chrome.i18n.getMessage('optionsSaved'));
-                status.fadeIn();
-                setTimeout(function () {
-                    status.text = '';
-                    status.fadeOut();
-                }, 750);
-            }
-        );
-    });
-});
+        oh.setData();
+    }, false);
+
+}();
+
+// load the options
+document.addEventListener('DOMContentLoaded', options, false);
