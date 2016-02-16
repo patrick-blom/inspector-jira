@@ -10,18 +10,28 @@
 <div class="settings-form">
     <form>
         <div class="form-group">
-            <label for="playButtonJunction">__MSG_startTrackerLabel__</label>
-            <input type="text" class="form-control toSave" id="playButtonJunction" placeholder="__MSG_startTrackerPlaceholder__">
+            <label>
+                <input type="checkbox" class="toSave" id="enableCombineTicketAndTracker">
+                __MSG_optionsEnableCombineTicketAndTracker__
+            </label>
         </div>
         <div class="form-group">
-            <label for="stopButtonJunction">__MSG_stopTrackerLabel__</label>
-            <input type="text" class="form-control toSave" id="stopButtonJunction" placeholder="__MSG_stopTrackerPlaceholder__">
+            <label for="playButtonJunction">__MSG_optionsStartTrackerIds__</label>
+            <input type="text" class="form-control toSave" id="playButtonJunction"
+                   placeholder="__MSG_optionsStartPlaceholder__">
         </div>
-        <span class="small">__MSG_trackerOptionsDescription__</span>
-        <div class="clearfix">&nbsp;</div>
-        <button id="save" type="button" class="btn btn-success">__MSG_optionsPageSave__</button>
+        <div class="form-group">
+            <label for="stopButtonJunction">__MSG_optionsStopTrackerIds__</label>
+            <input type="text" class="form-control toSave" id="stopButtonJunction"
+                   placeholder="__MSG_stopTrackerPlaceholder__">
+        </div>
+        <span class="small">__MSG_optionsTrackerDescription__</span>
     </form>
     <br/>
+</div>
+
+<div class="settings-form">
+    <button id="save" type="button" class="btn btn-success">__MSG_optionsPageSave__</button>
     <div class="message">
         <p id="status" class="bg-info"></p>
     </div>

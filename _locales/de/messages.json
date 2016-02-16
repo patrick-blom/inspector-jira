@@ -7,20 +7,23 @@
     "message": "Einstellungen",
     "description": "Titel der Options Page"
   },
-  "startTrackerLabel": {
-    "message": "Tracker Start Button Beschriftung/en"
+  "optionsEnableCombineTicketAndTracker": {
+    "message": "Fortschrittsbuttons mit Tempo Tracker verkn&uuml;pfen"
   },
-  "stopTrackerLabel": {
-    "message": "Tracker Stop Button Beschriftung/en"
+  "optionsStartTrackerIds": {
+    "message": "Die Ids dieser Buttons werden mit Tempo Tracker Start verkn&uuml;pft"
   },
-  "startTrackerPlaceholder": {
-    "message": "Fortschritt starten"
+  "optionsStopTrackerIds": {
+    "message": "Die Ids dieser Buttons werden mit Tempo Tracker Stop verkn&uuml;pft"
   },
-  "stopTrackerPlaceholder": {
-    "message": "Fortschritt stoppen"
+  "optionsStartPlaceholder": {
+    "message": "action_id_11"
   },
-  "trackerOptionsDescription": {
-    "message": "Diese Werte definieren die Beschriftungen der Fortschritt Start/Stop buttons in Jira. Bei klick auf diese wir der Tracker gestartet oder gestoppt. Mehrere Buttons k&ouml;nnen mit semikolon (;) getrennt angegeben werden."
+  "optionsStopPlaceholder": {
+    "message": "action_id_71"
+  },
+  "optionsTrackerDescription": {
+    "message": "Diese Werte definieren die Id's der Fortschritt Start/Stop buttons in Jira. Bei klick auf diese wir der Tracker gestartet oder gestoppt. Mehrere Buttons k&ouml;nnen mit semikolon (;) getrennt angegeben werden."
   },
   "optionsPageSave": {
     "message": "Speichern"
