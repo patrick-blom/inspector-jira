@@ -95,7 +95,14 @@ var inspectorJira = function () {
     if (jindentifier.identify()) {
         // send infos to the background script
         chrome.runtime.sendMessage({
-            "applicationInfo": jindentifier.getApplicationData()
+            "applicationInfo": jindentifier.getApplicationData(),
+            "type":"popup"
+        });
+
+        //get the config
+        console.log('get config');
+        chrome.runtime.sendMessage({"type":"config"}, function(response){
+            console.log(response);
         });
 
         // inject the enhance script

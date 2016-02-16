@@ -4,13 +4,22 @@ var backgroundData = {}
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
 
-        // show my page icon
-        chrome.pageAction.show(sender.tab.id);
+        switch (request.type){
+            case "popup":
+            case "default":
+                // show my page icon
+                chrome.pageAction.show(sender.tab.id);
 
-        // save request in property
-        if (request.applicationInfo) {
-            backgroundData['applicationInfo'] = request.applicationInfo;
+                // save request in property
+                if (request.applicationInfo) {
+                    backgroundData['applicationInfo'] = request.applicationInfo;
+                }
+                break;
+            case 'config':
+                //get the whole config
+                chrome.storage.sync.get(null, function (items) {
+                    sendResponse(items);
+                });
+                break;
         }
-
-        sendResponse();
     });
