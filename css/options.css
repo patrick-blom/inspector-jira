@@ -6,3 +6,8 @@ div.settings-form {
     border-radius: 4px;
     width: 500px;
 }
+
+.round{
+    border-radius: 4px;
+    display: block;
+}

@@ -16,8 +16,8 @@ var options = function () {
             var fields = {};
             var elements = document.querySelectorAll(this.saveSelector);
 
-            for (var element in elements) {
-                fields[element.id] = element.value;
+            for (var i = 0; i < elements.length; i++) {
+                fields[elements[i].id] = (elements[i].getAttribute('type') == 'checkbox') ? elements[i].checked : elements[i].value;
             }
 
             return fields;
@@ -28,10 +28,10 @@ var options = function () {
         getData: function () {
             chrome.storage.sync.get(this._collectFields(), function (items) {
                 for (var item in items) {
-                    var element = document.querySelector('#'.item);
+                    var element = document.querySelector('#' + item);
                     if (element) {
                         if (element.getAttribute('type') == 'checkbox') {
-                            element.checked = (items[item] == 'on') ? true : false;
+                            element.checked = items[item];
                         } else {
                             element.value = items[item];
                         }
@@ -40,14 +40,15 @@ var options = function () {
             });
         },
         setData: function () {
+            var selector = this.stateSelector;
             chrome.storage.sync.set(this._collectFields(), function () {
-                var state = document.querySelector(this.stateSelector);
+
+                var state = document.querySelector(selector);
                 state.innerHTML = chrome.i18n.getMessage('optionsSaved');
-                state.className.replace('hidden', '');
                 setTimeout(function () {
-                    state.className = state.className + ' hidden';
                     state.innerHTML = "";
                 }, 750);
+
             });
         }
     };
