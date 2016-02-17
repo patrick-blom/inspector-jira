@@ -4,9 +4,12 @@ var backgroundData = {}
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
 
-        switch (request.type){
+        console.log('hu some one ask me something...');
+        switch (request.type) {
             case "popup":
             case "default":
+
+                console.log('ah, a popup request. I\'ll show it in the request tab');
                 // show my page icon
                 chrome.pageAction.show(sender.tab.id);
 
@@ -15,10 +18,24 @@ chrome.runtime.onMessage.addListener(
                     backgroundData['applicationInfo'] = request.applicationInfo;
                 }
                 break;
-            case 'config':
+            case 'writeCookie':
+                console.log('Oh, you need some config vaules? I\'ll write them to a cookie');
+
                 //get the whole config
                 chrome.storage.sync.get(null, function (items) {
-                    sendResponse(items);
+                    var re = new RegExp(/^.+?[^\/:](?=[?\/]|$)/);
+                    var url = re.exec(sender.url);
+                    chrome.cookies.set({
+                        "url": url[0],
+                        "name": "inspector_config",
+                        "value": JSON.stringify(items)
+                    }, function (cookie) {
+                        console.log(JSON.stringify(cookie));
+                        console.log(chrome.extension.lastError);
+                        console.log(chrome.runtime.lastError);
+                    });
+
+                    console.log('Ok, i\'m ready. Check your cookies');
                 });
                 break;
         }

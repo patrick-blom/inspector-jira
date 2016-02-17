@@ -100,10 +100,7 @@ var inspectorJira = function () {
         });
 
         //get the config
-        console.log('get config');
-        chrome.runtime.sendMessage({"type":"config"}, function(response){
-            console.log(response);
-        });
+        chrome.runtime.sendMessage({"type":"writeCookie"});
 
         // inject the enhance script
         var customScript = document.createElement('script');
