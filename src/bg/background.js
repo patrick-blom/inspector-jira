@@ -23,12 +23,13 @@ chrome.runtime.onMessage.addListener(
 
                 //get the whole config
                 chrome.storage.sync.get(null, function (items) {
+
                     var re = new RegExp(/^.+?[^\/:](?=[?\/]|$)/);
                     var url = re.exec(sender.url);
                     chrome.cookies.set({
                         "url": url[0],
                         "name": "inspector_config",
-                        "value": JSON.stringify(items)
+                        "value": btoa(items) // base64 endcode the data
                     }, function (cookie) {
                         console.log(JSON.stringify(cookie));
                         console.log(chrome.extension.lastError);
