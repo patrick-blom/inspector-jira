@@ -29,7 +29,7 @@ chrome.runtime.onMessage.addListener(
                     chrome.cookies.set({
                         "url": url[0],
                         "name": "inspector_config",
-                        "value": btoa(items) // base64 endcode the data
+                        "value": btoa(JSON.stringify(items)) // base64 endcode the data
                     }, function (cookie) {
                         console.log(JSON.stringify(cookie));
                         console.log(chrome.extension.lastError);
