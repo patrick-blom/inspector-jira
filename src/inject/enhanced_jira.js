@@ -1,6 +1,11 @@
 !function () {
     console.log('BAM! enhanced injection successful!');
 
+    /**
+     * Cookie Handler
+     *
+     * @constructor
+     */
     var CookiesHandler = function () {
         this.cookies = null;
     };
@@ -23,9 +28,47 @@
         }
     }
 
-    $(document).on(JIRA.Events.ISSUE_REFRESHED, function () {
+    /**
+     * Combination Handler
+     *
+     * @param startIds
+     * @param stopIds
+     * @constructor
+     */
+    var CombineHandler = function (startIds, stopIds) {
+        this.startIds = startIds;
+        this.stopIds = stopIds;
+    };
 
-        var ch = new CookiesHandler();
+    CombineHandler.prototype = {
+        isTempoInstalled: function () {
+            return !!$('#tempo_menu').length;
+        },
+        showTracker: function () {
+            if ($('#tempo-bar').is(":visible") === false &&
+                this.isTempoInstalled() === true) {
+                $('#tempo-bar').show();
+            }
+        }
+    };
+
+    // Main script
+    var ch = new CookiesHandler();
+    var inspector_config = JSON.parse(atob(ch.readCookie('inspector_config')));
+
+    $(document).ready(function () {
+        if (inspector_config.enableCombineTicketAndTracker === true) {
+            var cmh = new CombineHandler(inspector_config.playButtonJunction, inspector_config.stopButtonJunction);
+
+            if (cmh.isTempoInstalled() === true) {
+                console.log('Tempoplugin found! Now i\'ll show the Tracker ');
+                cmh.showTracker();
+            }
+        }
+    });
+
+
+    $(document).on(JIRA.Events.ISSUE_REFRESHED, function () {
 
         console.log('listen on a catched jira event')
         console.log(
