@@ -15,7 +15,11 @@ var inspectorJira = function () {
             "build": '',
             "isBeta": false,
             "isRC": false,
-            "provideMails": false
+            "provideMails": false,
+            "userLocale": '',
+            "dateTimeFormat": '',
+            "isAdminUser": false
+
         }
 
     };
@@ -82,7 +86,10 @@ var inspectorJira = function () {
                 "build": "ajs-build-number",
                 "isBeta": "ajs-is-beta",
                 "isRC": "ajs-is-rc",
-                "provideMails": "ajs-outgoing-mail-enabled"
+                "provideMails": "ajs-outgoing-mail-enabled",
+                "userLocale": "ajs-user-locale",
+                "dateTimeFormat": "ajs-date-complete",
+                "isAdminUser": "ajs-is-admin"
             };
 
             return metaTags;
@@ -96,20 +103,8 @@ var inspectorJira = function () {
         // send infos to the background script
         chrome.runtime.sendMessage({
             "applicationInfo": jindentifier.getApplicationData(),
-            "type":"popup"
+            "type": "popup"
         });
-
-        //get the config
-        chrome.runtime.sendMessage({"type":"writeCookie"});
-
-        // inject the enhance script
-        var customScript = document.createElement('script');
-        customScript.src = chrome.extension.getURL('src/inject/enhanced_jira.js');
-        (document.head || document.documentElement).appendChild(customScript);
-        // remove script after loading
-        customScript.onload = function(){
-            this.parentNode.removeChild(customScript);
-        };
     }
 
 }();
