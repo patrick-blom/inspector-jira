@@ -1,2 +1,2 @@
 # inspector-jira
-chrome extension for enhanced jira features
+Shows all important Jira informations

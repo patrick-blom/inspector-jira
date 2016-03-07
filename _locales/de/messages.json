@@ -1,35 +1,7 @@
 {
   "extDescription": {
-    "message": "Verbesserte JRIA Funktionen, nützliche Shortcuts und mehr",
+    "message": "Zeigt dir alle wichtigen Jira-Infos ",
     "description": "Beschreibung der Chrome Erweiterung"
-  },
-  "optionsPageTitle": {
-    "message": "Einstellungen",
-    "description": "Titel der Options Page"
-  },
-  "optionsEnableCombineTicketAndTracker": {
-    "message": "Fortschrittsbuttons mit Tempo Tracker verkn&uuml;pfen"
-  },
-  "optionsStartTrackerIds": {
-    "message": "Die Ids dieser Buttons werden mit Tempo Tracker Start verkn&uuml;pft"
-  },
-  "optionsStopTrackerIds": {
-    "message": "Die Ids dieser Buttons werden mit Tempo Tracker Stop verkn&uuml;pft"
-  },
-  "optionsStartPlaceholder": {
-    "message": "action_id_11"
-  },
-  "optionsStopPlaceholder": {
-    "message": "action_id_71"
-  },
-  "optionsTrackerDescription": {
-    "message": "Diese Werte definieren die Id's der Fortschritt Start/Stop buttons in Jira. Bei klick auf diese wir der Tracker gestartet oder gestoppt. Mehrere Buttons k&ouml;nnen mit semikolon (;) getrennt angegeben werden."
-  },
-  "optionsPageSave": {
-    "message": "Speichern"
-  },
-  "optionsSaved": {
-    "message": "Einstellungen gespeichert"
   },
   "PopupHeadline": {
     "message": "Inspector Jira Status:"
@@ -54,5 +26,14 @@
   },
   "Popup_version": {
     "message": "Version:"
+  },
+  "Popup_userLocale": {
+    "message": "Benutzersprache:"
+  },
+  "Popup_dateTimeFormat": {
+    "message": "Datumsformat:"
+  },
+  "Popup_isAdminUser": {
+    "message": "Administrator:"
   }
 }

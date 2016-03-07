@@ -1,6 +1,39 @@
 {
   "extDescription": {
-    "message":"enhanced jira features, useful shortcuts and more"
-    ,"description":"Description of the chrome extension"
+    "message": "Shows all important Jira informations",
+    "description": "Description"
+  },
+  "PopupHeadline": {
+    "message": "Inspector Jira Status:"
+  },
+  "PopupHeadlineStateOK": {
+    "message": "active"
+  },
+  "Popup_build": {
+    "message": "Build:"
+  },
+  "Popup_devMode": {
+    "message": "Developer mode:"
+  },
+  "Popup_isBeta": {
+    "message": "Betaversion:"
+  },
+  "Popup_isRC": {
+    "message": "Release Candidate:"
+  },
+  "Popup_provideMails": {
+    "message": "Sends email:"
+  },
+  "Popup_version": {
+    "message": "Version:"
+  },
+  "Popup_userLocale": {
+    "message": "Userlocale:"
+  },
+  "Popup_dateTimeFormat": {
+    "message": "Dateformat:"
+  },
+  "Popup_isAdminUser": {
+    "message": "Is admin user:"
   }
 }
